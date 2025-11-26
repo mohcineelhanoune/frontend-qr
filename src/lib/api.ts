@@ -1,4 +1,4 @@
-export const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://qr.devura.ma";
+export const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://qr.devura.ma/public";
 
 async function request<T = unknown>(path: string, options: RequestInit = {}) {
   const token = typeof window !== "undefined" ? localStorage.getItem("vcard_token") : null;
