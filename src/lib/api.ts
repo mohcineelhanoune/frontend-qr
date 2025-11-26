@@ -19,11 +19,11 @@ export const api = {
   register: (body: { email: string; password: string; name: string }) =>
     request<{ ok: boolean }>("/api/register.php", { method: "POST", body: JSON.stringify(body) }),
   login: (body: { email: string; password: string }) =>
-    request<{ ok: boolean; token: string; user: { id: number; name: string; email: string } }>("/api/login.php", { method: "POST", body: JSON.stringify(body) }),
+    request<{ ok: boolean; token: string; user: { id: number; name: string; email: string } }>("/api/login", { method: "POST", body: JSON.stringify(body) }),
   listCards: () => request<{ items: unknown[] }>("/api/cards.php"),
-  createCard: (body: Record<string, unknown>) => request<{ ok: boolean; id: number }>("/api/cards.php", { method: "POST", body: JSON.stringify(body) }),
+  createCard: (body: Record<string, unknown>) => request<{ ok: boolean; id: number }>("/api/cards", { method: "POST", body: JSON.stringify(body) }),
   getCard: (id: number) => request<{ item: Card }>(`/api/cards.php?id=${id}`),
-  updateCard: (id: number, body: Record<string, unknown>) => request<{ ok: boolean }>(`/api/cards.php?id=${id}`, { method: "PUT", body: JSON.stringify(body) }),
-  deleteCard: (id: number) => request<{ ok: boolean }>(`/api/cards.php?id=${id}`, { method: "DELETE" }),
+  updateCard: (id: number, body: Record<string, unknown>) => request<{ ok: boolean }>(`/api/cards?id=${id}`, { method: "PUT", body: JSON.stringify(body) }),
+  deleteCard: (id: number) => request<{ ok: boolean }>(`/api/cards?id=${id}`, { method: "DELETE" }),
 };
 import type { Card } from "@/types";
